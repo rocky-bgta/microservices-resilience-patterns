@@ -2,6 +2,13 @@ spring:
   application:
     name: resilience-patterns
 resilience4j:
+  retry:
+    instances:
+      downstreamRetry:
+        maxAttempts: 3
+        waitDuration: 200ms
+        retryExceptions:
+          - org.springframework.web.client.RestClientException
   circuitbreaker:
     instances:
       downstream:
